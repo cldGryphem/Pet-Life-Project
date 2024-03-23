@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Сноу-шу (білоніжка)</title>
+    <style>
+        /* Стилі для мобільних пристроїв */
+  @media (max-width: 768px) {
+  /* Ваші стилі для маленьких екранів */
+  }
+
+  /* Стилі для планшетів */
+  @media (min-width: 769px) and (max-width: 1024px) {
+  /* Ваші стилі для середніх екранів */
+  }
+
+  /* Стилі для настільних комп'ютерів */
+  @media (min-width: 1025px) {
+  /* Ваші стилі для великих екранів */
+  }
+      
+  .start-text {
+    text-align: center; /* Вирівнювання тексту по центру */
+    font-size: 24px; /* Розмір тексту */
+    color: #333; /* Колір тексту */
+    margin-top: 15px; /* Відступ зверху */
+    margin-bottom: 10px;
+    font-weight: bold; /* Жирний шрифт */
+    text-transform: uppercase; /* Текст у верхньому регістрі */
+    }
+        
+  .header {
+    background-color: #333;
+    color: #fff;
+    padding: 15px;
+    text-align: left;
+    }
+        
+  .header a {
+    color: #fff;
+    text-decoration: none;
+    margin: 0 10px;
+    transition: opacity 0.3s ease; /* Плавний перехід на затемнення */
+    }
+        
+  .header a:hover {
+    opacity: 0.3; /* Затемнення тексту при наведенні */
+    color: #ff5e00;
+    }
+  
+    /* Reset стилі */
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    }
+        
+  body {
+    font-family: 'Arial', sans-serif;
+    background-color: #e2cbea;
+    }
+
+  .back-button {
+    padding: 10px;
+    font-size: 40px;
+    color: #bcbcbc;
+    border: none;
+    background: none;
+    cursor: pointer;
+    transition: color 0.3s ease;
+    }
+
+  .back-button:hover {
+    color: #282828;
+    }
+
+    
+  .container {
+    background-color: #69482c;
+    max-width: 1300px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: auto 1fr; 
+    gap: 20px;
+    padding: 20px;
+    border: 2px solid #694e27;
+    box-shadow: 0 0 15px rgb(77, 53, 35);
+    align-items: flex-start;
+    margin-bottom: 30px;
+    }
+
+  .image-container {
+    width: 350px;
+    position: relative;
+    overflow: hidden;
+    }
+
+  .image {
+    max-width: 100%;
+    opacity: 0;
+    transition: opacity 1s ease-in-out, right 1s ease-in-out;
+    }
+
+  .text {
+    color: rgb(174, 152, 141);
+    transition: transform 1s ease-in-out;
+    padding: 20px;
+    }
+
+  #searchContainer {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      margin-bottom: 40px;
+    }
+
+    /* Стилі для пошукового поля */
+#search {
+      padding: 8px;
+      width: 200px;
+      font-size: 14px;
+      border: none;
+      border-radius: 4px;
+      margin-bottom: 10px;
+    }
+
+    /* Стилі для списку результатів */
+#searchResults {
+      display: none;
+      position: absolute;
+      background-color: #e1e1e1;
+      border: none;
+      max-height: 200px;
+      overflow-y: auto;
+      list-style-type: none;
+      padding: 0;
+      margin: 0;
+      width: 200px;
+      top: calc(100% + 5px); /* Відступ від нижнього краю поля */
+  right: 0;
+    }
+
+#searchResults li {
+      padding: 10px;
+      cursor: pointer;
+    }
+
+#searchResults li:hover {
+      background-color: #8d8d8d;
+    }
+        
+
+    </style>
+</head>
+<body>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <div class="header">
+      <a href="../siteV1.html">Головна</a>
+      <a href="../porody.html">Породи тварин</a>
+      <a href="#">Взяти з притулку</a>
+      <div id="searchContainer">
+          <input type="text" id="search" placeholder="Пошук...">
+          <!-- Список результатів пошуку -->
+          <ul id="searchResults"></ul>
+        </div>
+
+        <script>
+          const data = [
+          { name: "Абісинська кішка",               link: "file:///C:/site/cat.porody/abbisanska-cat.html" },
+            { name: "Австралійська кішка",            link: "file:///C:/site/cat.porody/avstraliyska-cat.html" },              
+            { name: "Азійська кішка",                 link: "file:///C:/site/cat.porody/asiat-cat.html" },
+            { name: "Балінез",                        link: "file:///C:/site/cat.porody/baliiska-cat.html" },
+            { name: "Бенгальська кішка",              link: "file:///C:/site/cat.porody/bengalska-cat.html" },
+            { name: "Бірманська кішка",               link: "file:///C:/site/cat.porody/birmanska-cat.html" },
+            { name: "Бомбейська кішка",               link: "file:///C:/site/cat.porody/bombeiska-cat.html" },
+            { name: "Британська короткошерста кішка", link: "file:///C:/site/cat.porody/brytan-cat.html" },
+            { name: "Девон-рекс",                     link: "file:///C:/site/cat.porody/devon-rex-cat.html" },
+            { name: "Екзотична короткошерста кішка",  link: "file:///C:/site/cat.porody/exotyc-cat.html" },
+            { name: "Манчкін",                        link: "file:///C:/site/cat.porody/manchkin-cat.html" },
+            { name: "Корат",                          link: "file:///C:/site/cat.porody/korat-cat.html" },
+            { name: "Лаперм",                         link: "file:///C:/site/cat.porody/laperm-cat.html" },
+            { name: "Мейн-кун",                       link: "file:///C:/site/cat.porody/main-coon-cat.html" },
+            { name: "Сноу-шу (білоніжка)",            link: "file:///C:/site/cat.porody/snow-shoo-cat.html" },
+          ];
+        
+          const searchInput = document.getElementById('search');
+          const searchResults = document.getElementById('searchResults');
+        
+          // Функція для відображення результатів пошуку
+          function displayResults(results) {
+            searchResults.innerHTML = '';
+            results.forEach(result => {
+              const li = document.createElement('li');
+              li.textContent = result.name;
+              li.addEventListener('click', () => {
+                window.location.href = result.link;
+              });
+              searchResults.appendChild(li);
+            });
+            searchResults.style.display = 'block';
+          }
+        
+          // Обробник події для введення тексту у поле пошуку
+          searchInput.addEventListener('input', () => {
+            const searchText = searchInput.value.toLowerCase();
+            const filteredData = data.filter(item =>
+              item.name.toLowerCase().includes(searchText)
+            );
+        
+            if (searchText === '') {
+              searchResults.style.display = 'none';
+            } else {
+              displayResults(filteredData);
+            }
+          });
+        
+          // Сховати результати при кліку поза полем пошуку
+          document.addEventListener('click', (e) => {
+            if (e.target !== searchInput) {
+              searchResults.style.display = 'none';
+            }
+          });
+        </script>
+  </div>
+
+    <button class="back-button" onclick="goBack()">&#8592;</button>
+
+<script>
+    function goBack() {
+        window.history.back();
+    }
+</script>
+<h1 class="start-text">Сноу-шу (білоніжка)</h1>
+    
+<div class="container">
+  <div class="image-container">
+      <img class="image" src="../porody.pic.cat/snow.png" alt="abisynska-cat">
+  </div>
+  <div class="text">
+      <h3>Історія:</h3>
+      <p>Назва в перекладі з англійської означає «сніжна туфля». Одержали його кішки за білі «панчішки», як у бірманських напівдовгошерстих при забарвленні колорпоінт. Порода була створена в розпліднику в США. Сьогодні записаний стандарт, і порода зареєстрована в TICA, АСА й ACFA. Порода нечисленна й поширена переважно в Америці.</p>
+  </div>
+</div>
+
+<div class="container">
+  <div class="image-container">
+    <img class="image" src="../porody.pic.cat/snow2.png" alt="abisynska.cat">
+  </div>
+  <div class="text">
+    <h3>Вигляд:</h3>
+      <p>Кішки породи сноу-шу — це граційні, гармонійні тварини від середніх до великих розмірів. Тіло з не дуже міцним кістяком і добре розвиненою мускулатурою. Статура масивна. Спина довга. Кінцівки довгі, міцні. Лапи округлі. Хвіст середньої довжини, товстий в основі, трохи звужується до кінця.
+
+        Голова має форму рівностороннього трикутника, вона не така довга, як у сіамських предків. Очі великі, овальної форми, ясні й блискучі, посаджені під кутом до носа. Колір — блакитний. Вуха великі й широкі біля основи.
+        
+        Шерсть коротка, лискуча, глянсова, пружна, трохи грубувата на дотик, прилегла. Забарвлення: силпойнт або блюпойнт із білим. Розташування білих міток — короткий білий трикутник у вигляді літери V на морді, що захоплює ніс і перенісся. Біла мітка може поширюватися через підборіддя на груди у вигляді білої лінії. Такими ж чисто-білими повинні бути «туфельки» на передніх і задніх ногах.</p>
+  </div>
+</div>
+
+<div class="container">
+  <div class="image-container">
+    <img class="image" src="../porody.pic.cat/snow3.png" alt="abisynska.cat">
+  </div>
+  <div class="text">
+    <h3>Характер</h3>
+      <p>Сноу-шу, незважаючи на своє походження від сіамських кішок, спокійніші, ласкаві, дуже люблять людей, терплячі до дітей. Вони дуже ніжні, чарівні, ласкаві. Люблять супроводжувати господарів, подорожують за ними цілий день. Не люблять надовго залишатися на самоті. Із задоволенням приймають ванни. Не мають різкого голосу, як у сіамських кішок. Шерсть не потребує великого догляду.</p>
+  </div>
+</div>
+
+<script>
+  window.addEventListener('load', function() {
+    const containers = document.querySelectorAll('.container');
+
+    // Анімація для кожного контейнера
+    containers.forEach((container, index) => {
+      const image = container.querySelector('.image');
+      const text = container.querySelector('.text');
+
+      setTimeout(() => {
+        image.style.opacity = '1';
+        image.style.right = '0';
+        text.style.transform = 'translateX(20px)';
+      }, (index + 1) * 300); // Кожне наступне зображення починається через 300 мс після попереднього
+    });
+  });
+</script>
+
+
+</body>
+</html>

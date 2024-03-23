@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Бомбейська кішка</title>
+    <style>
+        /* Стилі для мобільних пристроїв */
+  @media (max-width: 768px) {
+  /* Ваші стилі для маленьких екранів */
+  }
+
+  /* Стилі для планшетів */
+  @media (min-width: 769px) and (max-width: 1024px) {
+  /* Ваші стилі для середніх екранів */
+  }
+
+  /* Стилі для настільних комп'ютерів */
+  @media (min-width: 1025px) {
+  /* Ваші стилі для великих екранів */
+  }
+      
+  .start-text {
+    text-align: center; /* Вирівнювання тексту по центру */
+    font-size: 24px; /* Розмір тексту */
+    color: #333; /* Колір тексту */
+    margin-top: 15px; /* Відступ зверху */
+    margin-bottom: 10px;
+    font-weight: bold; /* Жирний шрифт */
+    text-transform: uppercase; /* Текст у верхньому регістрі */
+    }
+        
+  .header {
+    background-color: #333;
+    color: #fff;
+    padding: 15px;
+    text-align: left;
+    }
+        
+  .header a {
+    color: #fff;
+    text-decoration: none;
+    margin: 0 10px;
+    transition: opacity 0.3s ease; /* Плавний перехід на затемнення */
+    }
+        
+  .header a:hover {
+    opacity: 0.3; /* Затемнення тексту при наведенні */
+    color: #ff5e00;
+    }
+  
+    /* Reset стилі */
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    }
+        
+  body {
+    font-family: 'Arial', sans-serif;
+    background-color: #e2cbea;
+    }
+
+  .back-button {
+    padding: 10px;
+    font-size: 40px;
+    color: #bcbcbc;
+    border: none;
+    background: none;
+    cursor: pointer;
+    transition: color 0.3s ease;
+    }
+
+  .back-button:hover {
+    color: #282828;
+    }
+
+    
+  .container {
+    background-color: #3f3f3f;
+    max-width: 1300px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: auto 1fr; 
+    gap: 20px;
+    padding: 20px;
+    border: 2px solid #948863;
+    box-shadow: 0 0 15px rgb(125, 113, 65);
+    align-items: flex-start;
+    margin-bottom: 30px;
+    }
+
+  .image-container {
+    width: 350px;
+    position: relative;
+    overflow: hidden;
+    }
+
+  .image {
+    max-width: 100%;
+    opacity: 0;
+    transition: opacity 1s ease-in-out, right 1s ease-in-out;
+    }
+
+  .text {
+    color: rgb(119, 119, 81);
+    transition: transform 1s ease-in-out;
+    padding: 20px;
+    }
+
+  #searchContainer {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      margin-bottom: 40px;
+    }
+
+    /* Стилі для пошукового поля */
+#search {
+      padding: 8px;
+      width: 200px;
+      font-size: 14px;
+      border: none;
+      border-radius: 4px;
+      margin-bottom: 10px;
+    }
+
+    /* Стилі для списку результатів */
+#searchResults {
+      display: none;
+      position: absolute;
+      background-color: #e1e1e1;
+      border: none;
+      max-height: 200px;
+      overflow-y: auto;
+      list-style-type: none;
+      padding: 0;
+      margin: 0;
+      width: 200px;
+      top: calc(100% + 5px); /* Відступ від нижнього краю поля */
+  right: 0;
+    }
+
+#searchResults li {
+      padding: 10px;
+      cursor: pointer;
+    }
+
+#searchResults li:hover {
+      background-color: #8d8d8d;
+    }
+        
+
+    </style>
+</head>
+<body>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <div class="header">
+      <a href="../siteV1.html">Головна</a>
+      <a href="../porody.html">Породи тварин</a>
+      <div id="searchContainer">
+          <input type="text" id="search" placeholder="Пошук...">
+          <!-- Список результатів пошуку -->
+          <ul id="searchResults"></ul>
+        </div>
+
+        <script>
+          const data = [
+          { name: "Абісинська кішка",               link: "file:///C:/site/cat.porody/abbisanska-cat.html" },
+            { name: "Австралійська кішка",            link: "file:///C:/site/cat.porody/avstraliyska-cat.html" },              
+            { name: "Азійська кішка",                 link: "file:///C:/site/cat.porody/asiat-cat.html" },
+            { name: "Балінез",                        link: "file:///C:/site/cat.porody/baliiska-cat.html" },
+            { name: "Бенгальська кішка",              link: "file:///C:/site/cat.porody/bengalska-cat.html" },
+            { name: "Бірманська кішка",               link: "file:///C:/site/cat.porody/birmanska-cat.html" },
+            { name: "Бомбейська кішка",               link: "file:///C:/site/cat.porody/bombeiska-cat.html" },
+            { name: "Британська короткошерста кішка", link: "file:///C:/site/cat.porody/brytan-cat.html" },
+            { name: "Девон-рекс",                     link: "file:///C:/site/cat.porody/devon-rex-cat.html" },
+            { name: "Екзотична короткошерста кішка",  link: "file:///C:/site/cat.porody/exotyc-cat.html" },
+            { name: "Манчкін",                        link: "file:///C:/site/cat.porody/manchkin-cat.html" },
+            { name: "Корат",                          link: "file:///C:/site/cat.porody/korat-cat.html" },
+            { name: "Лаперм",                         link: "file:///C:/site/cat.porody/laperm-cat.html" },
+            { name: "Мейн-кун",                       link: "file:///C:/site/cat.porody/main-coon-cat.html" },
+            { name: "Сноу-шу (білоніжка)",            link: "file:///C:/site/cat.porody/snow-shoo-cat.html" },
+          ];
+        
+          const searchInput = document.getElementById('search');
+          const searchResults = document.getElementById('searchResults');
+        
+          // Функція для відображення результатів пошуку
+          function displayResults(results) {
+            searchResults.innerHTML = '';
+            results.forEach(result => {
+              const li = document.createElement('li');
+              li.textContent = result.name;
+              li.addEventListener('click', () => {
+                window.location.href = result.link;
+              });
+              searchResults.appendChild(li);
+            });
+            searchResults.style.display = 'block';
+          }
+        
+          // Обробник події для введення тексту у поле пошуку
+          searchInput.addEventListener('input', () => {
+            const searchText = searchInput.value.toLowerCase();
+            const filteredData = data.filter(item =>
+              item.name.toLowerCase().includes(searchText)
+            );
+        
+            if (searchText === '') {
+              searchResults.style.display = 'none';
+            } else {
+              displayResults(filteredData);
+            }
+          });
+        
+          // Сховати результати при кліку поза полем пошуку
+          document.addEventListener('click', (e) => {
+            if (e.target !== searchInput) {
+              searchResults.style.display = 'none';
+            }
+          });
+        </script>
+  </div>
+
+    <button class="back-button" onclick="goBack()">&#8592;</button>
+
+<script>
+    function goBack() {
+        window.history.back();
+    }
+</script>
+<h1 class="start-text">Бомбейська кішка</h1>
+    
+<div class="container">
+  <div class="image-container">
+      <img class="image" src="../porody.pic.cat/bombeiska.png" alt="abisynska-cat">
+  </div>
+  <div class="text">
+      <h3>Історія:</h3>
+      <p>Це порівняно молода порода кішок, що була виведена в результаті схрещування бірманських короткошерстих кішок соболиного забарвлення 
+        з американськими короткошерстими чорного кольору. Робота велася протягом 20 років. У результаті в 1976 році порода була зареєстрована в CFA. 
+        Поширена переважно в Північній Америці. Бомбейські кішки активні, рухливі, грайливі, темпераментні. Люблять товариство людей, хоча й не завжди ладять із дітьми. 
+        Насторожено ставляться до сторонніх, тікають і ховаються в їхній присутності. Мають гарний апетит.</p>
+  </div>
+</div>
+
+<div class="container">
+  <div class="image-container">
+    <img class="image" src="../porody.pic.cat/bombeiska2.png" alt="abisynska.cat">
+  </div>
+  <div class="text">
+    <h3>Вигляд:</h3>
+      <p>Бомбей — це абсолютно антрацитно-чорна кішка із золотими або мідними очима. Має середні розміри. Тіло струнке, з добре вираженою мускулатурою. 
+        Груди широкі. Кінцівки середньої довжини, тонкі, з невеликими округлими лапами. Хвіст середньої довжини, прямий, трохи звужується до кінця. 
+        Самці більші, ніж самки. Голова кругла, без виступів або кутів. Лоб круглий. Підборіддя міцне, добре розвинене. Щоки виражені. 
+        Вуха середнього розміру, насторожені, широко посаджені, трохи нахилені вперед. Ніс короткий, широкий, з вираженим стопом, але не повинен виглядати кирпатим. 
+        Очі округлі, косо й далеко одне від одного посаджені, яскраві й блискучі, кольору апельсина, яскраво золотаві або мідного кольору.
+        Хутро надзвичайно коротке, прилягає до тіла, блискуче, справляє враження лакованої шкіри. Оцінка кішки на виставці на 55 % залежить від кольору 
+        і якості хутра. Забарвлення однотонне чорне від кінчиків до корінців волосся, без білих волосків і плям. Мочка, подушечки лап чорного кольору. Бомбей потребує 
+        частого миття для підтримки хутра у сяючому чистому стані. Линяє він у віці 1 року. При цьому коричнювате пухове хутро повинне бути вичесане щіткою. 
+        Через якийсь час тварина обростає новим хутром.</p>
+  </div>
+</div>
+
+<script>
+  window.addEventListener('load', function() {
+    const containers = document.querySelectorAll('.container');
+
+    // Анімація для кожного контейнера
+    containers.forEach((container, index) => {
+      const image = container.querySelector('.image');
+      const text = container.querySelector('.text');
+
+      setTimeout(() => {
+        image.style.opacity = '1';
+        image.style.right = '0';
+        text.style.transform = 'translateX(20px)';
+      }, (index + 1) * 300); // Кожне наступне зображення починається через 300 мс після попереднього
+    });
+  });
+</script>
+
+
+</body>
+</html>

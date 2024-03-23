@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Бенгальська кішка</title>
+    <style>
+        /* Стилі для мобільних пристроїв */
+  @media (max-width: 768px) {
+  /* Ваші стилі для маленьких екранів */
+  }
+
+  /* Стилі для планшетів */
+  @media (min-width: 769px) and (max-width: 1024px) {
+  /* Ваші стилі для середніх екранів */
+  }
+
+  /* Стилі для настільних комп'ютерів */
+  @media (min-width: 1025px) {
+  /* Ваші стилі для великих екранів */
+  }
+      
+  .start-text {
+    text-align: center; /* Вирівнювання тексту по центру */
+    font-size: 24px; /* Розмір тексту */
+    color: #333; /* Колір тексту */
+    margin-top: 15px; /* Відступ зверху */
+    margin-bottom: 10px;
+    font-weight: bold; /* Жирний шрифт */
+    text-transform: uppercase; /* Текст у верхньому регістрі */
+    }
+        
+  .header {
+    background-color: #333;
+    color: #fff;
+    padding: 15px;
+    text-align: left;
+    }
+        
+  .header a {
+    color: #fff;
+    text-decoration: none;
+    margin: 0 10px;
+    transition: opacity 0.3s ease; /* Плавний перехід на затемнення */
+    }
+        
+  .header a:hover {
+    opacity: 0.3; /* Затемнення тексту при наведенні */
+    color: #ff5e00;
+    }
+  
+    /* Reset стилі */
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    }
+        
+  body {
+    font-family: 'Arial', sans-serif;
+    background-color: #e2cbea;
+    }
+
+  .back-button {
+    padding: 10px;
+    font-size: 40px;
+    color: #bcbcbc;
+    border: none;
+    background: none;
+    cursor: pointer;
+    transition: color 0.3s ease;
+    }
+
+  .back-button:hover {
+    color: #282828;
+    }
+
+    
+  .container {
+    background-color: #514d4d;
+    max-width: 1300px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: auto 1fr; 
+    gap: 20px;
+    padding: 20px;
+    border: 2px solid #515151;
+    box-shadow: 0 0 15px rgb(116, 115, 115);
+    align-items: flex-start;
+    margin-bottom: 30px;
+    }
+
+  .image-container {
+    width: 350px;
+    position: relative;
+    overflow: hidden;
+    }
+
+  .image {
+    max-width: 100%;
+    opacity: 0;
+    transition: opacity 1s ease-in-out, right 1s ease-in-out;
+    }
+
+  .text {
+    color: rgb(139, 139, 139);
+    transition: transform 1s ease-in-out;
+    padding: 20px;
+    }
+
+  #searchContainer {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      margin-bottom: 40px;
+    }
+
+    /* Стилі для пошукового поля */
+#search {
+      padding: 8px;
+      width: 200px;
+      font-size: 14px;
+      border: none;
+      border-radius: 4px;
+      margin-bottom: 10px;
+    }
+
+    /* Стилі для списку результатів */
+#searchResults {
+      display: none;
+      position: absolute;
+      background-color: #e1e1e1;
+      border: none;
+      max-height: 200px;
+      overflow-y: auto;
+      list-style-type: none;
+      padding: 0;
+      margin: 0;
+      width: 200px;
+      top: calc(100% + 5px); /* Відступ від нижнього краю поля */
+  right: 0;
+    }
+
+#searchResults li {
+      padding: 10px;
+      cursor: pointer;
+    }
+
+#searchResults li:hover {
+      background-color: #8d8d8d;
+    }
+        
+
+    </style>
+</head>
+<body>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <div class="header">
+      <a href="../siteV1.html">Головна</a>
+      <a href="../porody.html">Породи тварин</a>
+      <a href="#">Взяти з притулку</a>
+      <div id="searchContainer">
+          <input type="text" id="search" placeholder="Пошук...">
+          <!-- Список результатів пошуку -->
+          <ul id="searchResults"></ul>
+        </div>
+
+        <script>
+          const data = [
+          { name: "Абісинська кішка",               link: "file:///C:/site/cat.porody/abbisanska-cat.html" },
+            { name: "Австралійська кішка",            link: "file:///C:/site/cat.porody/avstraliyska-cat.html" },              
+            { name: "Азійська кішка",                 link: "file:///C:/site/cat.porody/asiat-cat.html" },
+            { name: "Балінез",                        link: "file:///C:/site/cat.porody/baliiska-cat.html" },
+            { name: "Бенгальська кішка",              link: "file:///C:/site/cat.porody/bengalska-cat.html" },
+            { name: "Бірманська кішка",               link: "file:///C:/site/cat.porody/birmanska-cat.html" },
+            { name: "Бомбейська кішка",               link: "file:///C:/site/cat.porody/bombeiska-cat.html" },
+            { name: "Британська короткошерста кішка", link: "file:///C:/site/cat.porody/brytan-cat.html" },
+            { name: "Девон-рекс",                     link: "file:///C:/site/cat.porody/devon-rex-cat.html" },
+            { name: "Екзотична короткошерста кішка",  link: "file:///C:/site/cat.porody/exotyc-cat.html" },
+            { name: "Манчкін",                        link: "file:///C:/site/cat.porody/manchkin-cat.html" },
+            { name: "Корат",                          link: "file:///C:/site/cat.porody/korat-cat.html" },
+            { name: "Лаперм",                         link: "file:///C:/site/cat.porody/laperm-cat.html" },
+            { name: "Мейн-кун",                       link: "file:///C:/site/cat.porody/main-coon-cat.html" },
+            { name: "Сноу-шу (білоніжка)",            link: "file:///C:/site/cat.porody/snow-shoo-cat.html" },
+          ];
+        
+          const searchInput = document.getElementById('search');
+          const searchResults = document.getElementById('searchResults');
+        
+          // Функція для відображення результатів пошуку
+          function displayResults(results) {
+            searchResults.innerHTML = '';
+            results.forEach(result => {
+              const li = document.createElement('li');
+              li.textContent = result.name;
+              li.addEventListener('click', () => {
+                window.location.href = result.link;
+              });
+              searchResults.appendChild(li);
+            });
+            searchResults.style.display = 'block';
+          }
+        
+          // Обробник події для введення тексту у поле пошуку
+          searchInput.addEventListener('input', () => {
+            const searchText = searchInput.value.toLowerCase();
+            const filteredData = data.filter(item =>
+              item.name.toLowerCase().includes(searchText)
+            );
+        
+            if (searchText === '') {
+              searchResults.style.display = 'none';
+            } else {
+              displayResults(filteredData);
+            }
+          });
+        
+          // Сховати результати при кліку поза полем пошуку
+          document.addEventListener('click', (e) => {
+            if (e.target !== searchInput) {
+              searchResults.style.display = 'none';
+            }
+          });
+        </script>
+  </div>
+
+    <button class="back-button" onclick="goBack()">&#8592;</button>
+
+<script>
+    function goBack() {
+        window.history.back();
+    }
+</script>
+<h1 class="start-text">Кіт Манчкін</h1>
+    
+<div class="container">
+  <div class="image-container">
+      <img class="image" src="../porody.pic.cat/manch.png" alt="abisynska-cat">
+  </div>
+  <div class="text">
+      <h3>Історія:</h3>
+      <p>Впреше такий тип кішок помітили в 1930 році в Англії, але через деякий час вони зникли з невідомих причин. В 1983 році в США в містечку Рейдвілл у 
+        північно-східній Луїзіані, Сандра Хочнедл знайшла чорну коротконогу кішку, що жила під сміттєвим фургоном. Половина народжених кошенят успадкувала 
+        короткі лапи матері. Родоводи всіх кішок породи манчкін починаються з цієї кішки і її потомства. Першою у світі манчкінів визнала американська фелінологічна 
+        організація ТІСА. На сьогодні вона є провідною за якістю манчкінів. WCF визнала породу з 2002 року. Є два варіанти манчкінів: стандартні й нестандартні. 
+        Стандартний — це коротколапий манчкін, що відповідає стандарту щодо довжини. Може з'явитися від двох коротколапих або одного коротколапого, а 
+        другого — довголапого манчкінів. Нестандартний — це довголапий манчкін, народжений від обох коротколапих, або одного коротколапого, батьків. 
+        Він має родовід про своє походження, може використовуватися надалі у розведенні, але не може брати участь у виставках.
+        </p>
+  </div>
+</div>
+
+<div class="container">
+  <div class="image-container">
+    <img class="image" src="../porody.pic.cat/manch2.png" alt="abisynska.cat">
+  </div>
+  <div class="text">
+    <h3>Вигляд:</h3>
+      <p>Манчкіни — це коротколапі тварини з елегантним тілом середніх розмірів. Тіло витягнуте, з добре розвиненою мускулатурою, з невеликим підвищенням від холки 
+        до крупу. Груди округлені, добре розвинені. Кінцівки короткі, іноді виглядають надто міцними. Передні — однакової товщини по всій довжині. Припустимим є 
+        певне скривлення передніх лап. Задні трохи довші, ніж передні. Лапи округлі, компактні. Хвіст пропорційний до тіла, звужується до кінчика. Коти більші, 
+        ніж кішки. Голова середніх розмірів, у вигляді широкого клина із плавними контурами. Лоб плаский. Вилиці помірно виражені, високі. Підборіддя широке. 
+        Перехід від чола до носа плавний. Ніс середньої довжини. Можливий невеликий прогин. Вуха середніх розмірів, широкі в основі, з трохи заокругленими кінчиками, 
+        досить високо й широко поставлені. Очі мають форму волоського горіха, широко розставлені, відкриті, виразні. Розташовані під невеликим кутом до основи вух. 
+        Колір залежить від забарвлення. Шия товста, мускулиста. Шерстний покрив двох видів: короткошерсті й довгошерсті. Короткошерсті мають шерсть блискучу, 
+        плюшеву за текстурою, із середньорозвиненим підшерстям. Рівнозабарвлені особини можуть мати важчу шерсть. Напівдовгошерсті мають шерсть шовковисту, густу, 
+        з гарними захисними властивостями. Підшерстя середньорозвинене. Трохи виділяється комір. Шерсть у нижній частині тіла довша.</p>
+  </div>
+</div>
+
+<div class="container">
+  <div class="image-container">
+    <img class="image" src="../porody.pic.cat/manch3.png" alt="abisynska.cat">
+  </div>
+  <div class="text">
+    <h3>Характер</h3>
+      <p>Манчкіни дуже рухливі, можуть досить швидко бігати (швидше, ніж їхні довгоногі родичі), добре лазять по деревах. Вони здатні пробратися навіть у дуже вузькі 
+        щілини. Кішки життєрадісні, люблять людей, охоче граються й гуляють із господарями. Люблять збирати й нести до себе на улюблене місце речі, що сподобалися. 
+        Добре ладять з іншими тваринами, доброзичливі, миролюбні.
+
+      </p>
+  </div>
+</div>
+
+<script>
+  window.addEventListener('load', function() {
+    const containers = document.querySelectorAll('.container');
+
+    // Анімація для кожного контейнера
+    containers.forEach((container, index) => {
+      const image = container.querySelector('.image');
+      const text = container.querySelector('.text');
+
+      setTimeout(() => {
+        image.style.opacity = '1';
+        image.style.right = '0';
+        text.style.transform = 'translateX(20px)';
+      }, (index + 1) * 300); // Кожне наступне зображення починається через 300 мс після попереднього
+    });
+  });
+</script>
+
+
+</body>
+</html>

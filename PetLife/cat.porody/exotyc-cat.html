@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Екзотична короткошерста кішка</title>
+    <style>
+        /* Стилі для мобільних пристроїв */
+  @media (max-width: 768px) {
+  /* Ваші стилі для маленьких екранів */
+  }
+
+  /* Стилі для планшетів */
+  @media (min-width: 769px) and (max-width: 1024px) {
+  /* Ваші стилі для середніх екранів */
+  }
+
+  /* Стилі для настільних комп'ютерів */
+  @media (min-width: 1025px) {
+  /* Ваші стилі для великих екранів */
+  }
+      
+  .start-text {
+    text-align: center; /* Вирівнювання тексту по центру */
+    font-size: 24px; /* Розмір тексту */
+    color: #333; /* Колір тексту */
+    margin-top: 15px; /* Відступ зверху */
+    margin-bottom: 10px;
+    font-weight: bold; /* Жирний шрифт */
+    text-transform: uppercase; /* Текст у верхньому регістрі */
+    }
+        
+  .header {
+    background-color: #333;
+    color: #fff;
+    padding: 15px;
+    text-align: left;
+    }
+        
+  .header a {
+    color: #fff;
+    text-decoration: none;
+    margin: 0 10px;
+    transition: opacity 0.3s ease; /* Плавний перехід на затемнення */
+    }
+        
+  .header a:hover {
+    opacity: 0.3; /* Затемнення тексту при наведенні */
+    color: #ff5e00;
+    }
+  
+    /* Reset стилі */
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    }
+        
+  body {
+    font-family: 'Arial', sans-serif;
+    background-color: #e2cbea;
+    }
+
+  .back-button {
+    padding: 10px;
+    font-size: 40px;
+    color: #bcbcbc;
+    border: none;
+    background: none;
+    cursor: pointer;
+    transition: color 0.3s ease;
+    }
+
+  .back-button:hover {
+    color: #282828;
+    }
+
+    
+  .container {
+    background-color: #315d5f;
+    max-width: 1300px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: auto 1fr; 
+    gap: 20px;
+    padding: 20px;
+    border: 2px solid #546477;
+    box-shadow: 0 0 15px rgb(51, 74, 88);
+    align-items: flex-start;
+    margin-bottom: 30px;
+    }
+
+  .image-container {
+    width: 350px;
+    position: relative;
+    overflow: hidden;
+    }
+
+  .image {
+    max-width: 100%;
+    opacity: 0;
+    transition: opacity 1s ease-in-out, right 1s ease-in-out;
+    }
+
+  .text {
+    color: rgb(75, 71, 53);
+    transition: transform 1s ease-in-out;
+    padding: 20px;
+    }
+
+  #searchContainer {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      margin-bottom: 40px;
+    }
+
+    /* Стилі для пошукового поля */
+#search {
+      padding: 8px;
+      width: 200px;
+      font-size: 14px;
+      border: none;
+      border-radius: 4px;
+      margin-bottom: 10px;
+    }
+
+    /* Стилі для списку результатів */
+#searchResults {
+      display: none;
+      position: absolute;
+      background-color: #e1e1e1;
+      border: none;
+      max-height: 200px;
+      overflow-y: auto;
+      list-style-type: none;
+      padding: 0;
+      margin: 0;
+      width: 200px;
+      top: calc(100% + 5px); /* Відступ від нижнього краю поля */
+  right: 0;
+    }
+
+#searchResults li {
+      padding: 10px;
+      cursor: pointer;
+    }
+
+#searchResults li:hover {
+      background-color: #8d8d8d;
+    }
+        
+
+    </style>
+</head>
+<body>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <div class="header">
+      <a href="../siteV1.html">Головна</a>
+      <a href="../porody.html">Породи тварин</a>
+      <a href="#">Взяти з притулку</a>
+      <div id="searchContainer">
+          <input type="text" id="search" placeholder="Пошук...">
+          <!-- Список результатів пошуку -->
+          <ul id="searchResults"></ul>
+        </div>
+
+        <script>
+          const data = [
+          { name: "Абісинська кішка",               link: "file:///C:/site/cat.porody/abbisanska-cat.html" },
+            { name: "Австралійська кішка",            link: "file:///C:/site/cat.porody/avstraliyska-cat.html" },              
+            { name: "Азійська кішка",                 link: "file:///C:/site/cat.porody/asiat-cat.html" },
+            { name: "Балінез",                        link: "file:///C:/site/cat.porody/baliiska-cat.html" },
+            { name: "Бенгальська кішка",              link: "file:///C:/site/cat.porody/bengalska-cat.html" },
+            { name: "Бірманська кішка",               link: "file:///C:/site/cat.porody/birmanska-cat.html" },
+            { name: "Бомбейська кішка",               link: "file:///C:/site/cat.porody/bombeiska-cat.html" },
+            { name: "Британська короткошерста кішка", link: "file:///C:/site/cat.porody/brytan-cat.html" },
+            { name: "Девон-рекс",                     link: "file:///C:/site/cat.porody/devon-rex-cat.html" },
+            { name: "Екзотична короткошерста кішка",  link: "file:///C:/site/cat.porody/exotyc-cat.html" },
+            { name: "Манчкін",                        link: "file:///C:/site/cat.porody/manchkin-cat.html" },
+            { name: "Корат",                          link: "file:///C:/site/cat.porody/korat-cat.html" },
+            { name: "Лаперм",                         link: "file:///C:/site/cat.porody/laperm-cat.html" },
+            { name: "Мейн-кун",                       link: "file:///C:/site/cat.porody/main-coon-cat.html" },
+            { name: "Сноу-шу (білоніжка)",            link: "file:///C:/site/cat.porody/snow-shoo-cat.html" },
+          ];
+        
+          const searchInput = document.getElementById('search');
+          const searchResults = document.getElementById('searchResults');
+        
+          // Функція для відображення результатів пошуку
+          function displayResults(results) {
+            searchResults.innerHTML = '';
+            results.forEach(result => {
+              const li = document.createElement('li');
+              li.textContent = result.name;
+              li.addEventListener('click', () => {
+                window.location.href = result.link;
+              });
+              searchResults.appendChild(li);
+            });
+            searchResults.style.display = 'block';
+          }
+        
+          // Обробник події для введення тексту у поле пошуку
+          searchInput.addEventListener('input', () => {
+            const searchText = searchInput.value.toLowerCase();
+            const filteredData = data.filter(item =>
+              item.name.toLowerCase().includes(searchText)
+            );
+        
+            if (searchText === '') {
+              searchResults.style.display = 'none';
+            } else {
+              displayResults(filteredData);
+            }
+          });
+        
+          // Сховати результати при кліку поза полем пошуку
+          document.addEventListener('click', (e) => {
+            if (e.target !== searchInput) {
+              searchResults.style.display = 'none';
+            }
+          });
+        </script>
+  </div>
+
+    <button class="back-button" onclick="goBack()">&#8592;</button>
+
+<script>
+    function goBack() {
+        window.history.back();
+    }
+</script>
+<h1 class="start-text">Екзотична короткошерста кішка</h1>
+    
+<div class="container">
+  <div class="image-container">
+      <img class="image" src="../porody.pic.cat/exot.png" alt="abisynska-cat">
+  </div>
+  <div class="text">
+      <h3>Історія:</h3>
+      <p>Проводилось схрещування перських кішок з американськими короткошерстими, з метою покращення типу американської короткошерстої породи. 
+        Схрещування з персами дало несподіваний результат. Отримані кішки відрізнялися й від персів, і від короткошерстих. Спочатку називали породу перською 
+        короткошерстою. Однак пізніше порода одержала назву екзотичної короткошерстої. Визнана офіційно в США в 1966 році, в інших країнах — з 1967 року. 
+        У 1985 р. включена в каталог порід FIFE.</p>
+  </div>
+</div>
+
+<div class="container">
+  <div class="image-container">
+    <img class="image" src="../porody.pic.cat/exot2.png" alt="abisynska.cat">
+  </div>
+  <div class="text">
+    <h3>Вигляд:</h3>
+      <p>Екзотичні короткошерсті кішки — це тварини від великого до середнього розміру. Тіло приосадкувате, кремезне, низько посаджене, має масивний кістяк, 
+        широке в грудях, масивне в плечах і хрестці. Спина пряма, рівна. Ноги короткі, міцні. Передні кінцівки прямі. Лапи великі, круглі, зібрані в грудку. 
+        Хвіст товстий, прямий, короткий, із заокругленим кінчиком. Рівномірно вкритий хутром. Голова без кутів і без пласких поверхонь, масивна, 
+        велика, із широким черепом. Морда з добре розвиненими вилицями, сильними щелепами. Ніс короткий, широкий, кирпатий, з добре розвиненою сіделкою. 
+        В ідеалі верхній край мочки носа повинен бути розташований не нижче рівня нижнього віка. Відстань між стопом і верхом голови повинна дорівнювати 
+        відстані між стопом і підборіддям. Вона може бути розташована вище, але не нижче. Підборіддя міцне. Губи м'яко вигинаються, підкреслюючи округлість 
+        морди й щік. Очі великі, круглі, опуклі, широко розставлені. Колір очей різний, пов'язаний із забарвленням. Вуха дуже маленькі, із заокругленими 
+        кінцями, широко розставлені, посаджені низько. Трохи нахилені вперед. Шия товста, коротка. Хутро середньої довжини (довша, ніж у інших короткошерстих порід), 
+        густе, плюшеве на вигляд, м'яке. Відстоїть від тіла завдяки багатому густому підшерстю. Припустима довжина хутра (остьове волосся може бути завдовжки 5-6 см) з
+        алежить від належного за якістю підшерстя. Кішки з довгим хутром на хвості повинні бути переведені до класу персів.</p>
+  </div>
+</div>
+
+<div class="container">
+  <div class="image-container">
+    <img class="image" src="../porody.pic.cat/exot3.png" alt="abisynska.cat">
+  </div>
+  <div class="text">
+    <h3>Характер</h3>
+      <p>Екзотичні короткошерсті кішки за зовнішнім виглядом і характером нагадують перських кішок. Вони спокійні, ласкаві, доброзичливі. Рідко подають голос. 
+        Одночасно вони активні, тямущі. Жваво реагують на оточення. Їхнє хутро не потребує особливого догляду.</p>
+  </div>
+</div>
+
+<script>
+  window.addEventListener('load', function() {
+    const containers = document.querySelectorAll('.container');
+
+    // Анімація для кожного контейнера
+    containers.forEach((container, index) => {
+      const image = container.querySelector('.image');
+      const text = container.querySelector('.text');
+
+      setTimeout(() => {
+        image.style.opacity = '1';
+        image.style.right = '0';
+        text.style.transform = 'translateX(20px)';
+      }, (index + 1) * 300); // Кожне наступне зображення починається через 300 мс після попереднього
+    });
+  });
+</script>
+
+
+</body>
+</html>

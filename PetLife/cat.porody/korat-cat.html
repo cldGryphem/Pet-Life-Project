@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Корат</title>
+    <style>
+        /* Стилі для мобільних пристроїв */
+  @media (max-width: 768px) {
+  /* Ваші стилі для маленьких екранів */
+  }
+
+  /* Стилі для планшетів */
+  @media (min-width: 769px) and (max-width: 1024px) {
+  /* Ваші стилі для середніх екранів */
+  }
+
+  /* Стилі для настільних комп'ютерів */
+  @media (min-width: 1025px) {
+  /* Ваші стилі для великих екранів */
+  }
+      
+  .start-text {
+    text-align: center; /* Вирівнювання тексту по центру */
+    font-size: 24px; /* Розмір тексту */
+    color: #333; /* Колір тексту */
+    margin-top: 15px; /* Відступ зверху */
+    margin-bottom: 10px;
+    font-weight: bold; /* Жирний шрифт */
+    text-transform: uppercase; /* Текст у верхньому регістрі */
+    }
+        
+  .header {
+    background-color: #333;
+    color: #fff;
+    padding: 15px;
+    text-align: left;
+    }
+        
+  .header a {
+    color: #fff;
+    text-decoration: none;
+    margin: 0 10px;
+    transition: opacity 0.3s ease; /* Плавний перехід на затемнення */
+    }
+        
+  .header a:hover {
+    opacity: 0.3; /* Затемнення тексту при наведенні */
+    color: #ff5e00;
+    }
+  
+    /* Reset стилі */
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    }
+        
+  body {
+    font-family: 'Arial', sans-serif;
+    background-color: #e2cbea;
+    }
+
+  .back-button {
+    padding: 10px;
+    font-size: 40px;
+    color: #bcbcbc;
+    border: none;
+    background: none;
+    cursor: pointer;
+    transition: color 0.3s ease;
+    }
+
+  .back-button:hover {
+    color: #282828;
+    }
+
+    
+  .container {
+    background-color: #3a3a3a;
+    max-width: 1300px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: auto 1fr; 
+    gap: 20px;
+    padding: 20px;
+    border: 2px solid #657167;
+    box-shadow: 0 0 15px rgb(88, 106, 84);
+    align-items: flex-start;
+    margin-bottom: 30px;
+    }
+
+  .image-container {
+    width: 350px;
+    position: relative;
+    overflow: hidden;
+    }
+
+  .image {
+    max-width: 100%;
+    opacity: 0;
+    transition: opacity 1s ease-in-out, right 1s ease-in-out;
+    }
+
+  .text {
+    color: rgb(60, 93, 46);
+    transition: transform 1s ease-in-out;
+    padding: 20px;
+    }
+
+  #searchContainer {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      margin-bottom: 40px;
+    }
+
+    /* Стилі для пошукового поля */
+#search {
+      padding: 8px;
+      width: 200px;
+      font-size: 14px;
+      border: none;
+      border-radius: 4px;
+      margin-bottom: 10px;
+    }
+
+    /* Стилі для списку результатів */
+#searchResults {
+      display: none;
+      position: absolute;
+      background-color: #e1e1e1;
+      border: none;
+      max-height: 200px;
+      overflow-y: auto;
+      list-style-type: none;
+      padding: 0;
+      margin: 0;
+      width: 200px;
+      top: calc(100% + 5px); /* Відступ від нижнього краю поля */
+  right: 0;
+    }
+
+#searchResults li {
+      padding: 10px;
+      cursor: pointer;
+    }
+
+#searchResults li:hover {
+      background-color: #8d8d8d;
+    }
+        
+
+    </style>
+</head>
+<body>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <div class="header">
+      <a href="../siteV1.html">Головна</a>
+      <a href="../porody.html">Породи тварин</a>
+      <a href="#">Взяти з притулку</a>
+      <div id="searchContainer">
+          <input type="text" id="search" placeholder="Пошук...">
+          <!-- Список результатів пошуку -->
+          <ul id="searchResults"></ul>
+        </div>
+
+        <script>
+          const data = [
+          { name: "Абісинська кішка",               link: "file:///C:/site/cat.porody/abbisanska-cat.html" },
+            { name: "Австралійська кішка",            link: "file:///C:/site/cat.porody/avstraliyska-cat.html" },              
+            { name: "Азійська кішка",                 link: "file:///C:/site/cat.porody/asiat-cat.html" },
+            { name: "Балінез",                        link: "file:///C:/site/cat.porody/baliiska-cat.html" },
+            { name: "Бенгальська кішка",              link: "file:///C:/site/cat.porody/bengalska-cat.html" },
+            { name: "Бірманська кішка",               link: "file:///C:/site/cat.porody/birmanska-cat.html" },
+            { name: "Бомбейська кішка",               link: "file:///C:/site/cat.porody/bombeiska-cat.html" },
+            { name: "Британська короткошерста кішка", link: "file:///C:/site/cat.porody/brytan-cat.html" },
+            { name: "Девон-рекс",                     link: "file:///C:/site/cat.porody/devon-rex-cat.html" },
+            { name: "Екзотична короткошерста кішка",  link: "file:///C:/site/cat.porody/exotyc-cat.html" },
+            { name: "Манчкін",                        link: "file:///C:/site/cat.porody/manchkin-cat.html" },
+            { name: "Корат",                          link: "file:///C:/site/cat.porody/korat-cat.html" },
+            { name: "Лаперм",                         link: "file:///C:/site/cat.porody/laperm-cat.html" },
+            { name: "Мейн-кун",                       link: "file:///C:/site/cat.porody/main-coon-cat.html" },
+            { name: "Сноу-шу (білоніжка)",            link: "file:///C:/site/cat.porody/snow-shoo-cat.html" },
+          ];
+        
+          const searchInput = document.getElementById('search');
+          const searchResults = document.getElementById('searchResults');
+        
+          // Функція для відображення результатів пошуку
+          function displayResults(results) {
+            searchResults.innerHTML = '';
+            results.forEach(result => {
+              const li = document.createElement('li');
+              li.textContent = result.name;
+              li.addEventListener('click', () => {
+                window.location.href = result.link;
+              });
+              searchResults.appendChild(li);
+            });
+            searchResults.style.display = 'block';
+          }
+        
+          // Обробник події для введення тексту у поле пошуку
+          searchInput.addEventListener('input', () => {
+            const searchText = searchInput.value.toLowerCase();
+            const filteredData = data.filter(item =>
+              item.name.toLowerCase().includes(searchText)
+            );
+        
+            if (searchText === '') {
+              searchResults.style.display = 'none';
+            } else {
+              displayResults(filteredData);
+            }
+          });
+        
+          // Сховати результати при кліку поза полем пошуку
+          document.addEventListener('click', (e) => {
+            if (e.target !== searchInput) {
+              searchResults.style.display = 'none';
+            }
+          });
+        </script>
+  </div>
+
+    <button class="back-button" onclick="goBack()">&#8592;</button>
+
+<script>
+    function goBack() {
+        window.history.back();
+    }
+</script>
+<h1 class="start-text">Корат</h1>
+    
+<div class="container">
+  <div class="image-container">
+      <img class="image" src="../porody.pic.cat/korat.png" alt="abisynska-cat">
+  </div>
+  <div class="text">
+      <h3>Історія:</h3>
+      <p>На батьківщині цих кішок називають «si-souvat», що в перекладі означає «та, що приносить щастя», і цінують дуже високо. Їх вважають символом процвітання. 
+        Пара кішок, подарована молодятам, гарантує їм щастя й добробут. Сьогодні корат вважається національним надбанням Таїланду, і вивіз його обмежений. 
+        Уперше кората продемонстрували на виставці Національного котячого клубу кішок в Англії у 1896 році як сіамську кішку. Але інтерес до нової породи не виник. 
+        У 1959 році з Таїланду в США була вивезена пара кішок, які послужили вихідним матеріалом для розведення й поширення тварин. Уже до 1965 року порода 
+        була визнана всіма фелінологічними організаціями США. Сучасні корати, у порівнянні з іншими східними короткошерстими породами, збереглися ближче до 
+        вихідної форми. Із США вони потрапили до Англії в 1972 році, а визнані як порода в 1975 році. У 1982 році порода визнана FIFE. До Франції перші корати 
+        потрапили в 1988 році. Тут був створений клуб любителів цієї породи під назвою «Європейська фелінологічна асоціація на захист кората». У виставкових 
+        тварин має бути документальне підтвердження їхнього походження від предків з Таїланду. Порода залишається рідкісною. Найбільше поголів'я знаходиться в 
+        США, хоча корати зустрічаються в багатьох країнах світу.</p>
+  </div>
+</div>
+
+<div class="container">
+  <div class="image-container">
+    <img class="image" src="../porody.pic.cat/korat2.png" alt="abisynska.cat">
+  </div>
+  <div class="text">
+    <h3>Вигляд:</h3>
+      <p>Кішки породи корат — це тварини середніх розмірів, міцні, стрункі, сильні. Тіло з добре розвиненою мускулатурою, досить міцне, кремезне, низько посаджене. 
+        Груди широкі. Спина й поперек мускулясті. Спина трохи опукла. Кінцівки середньої довжини, пропорційні стосовно тулуба. Передні кінцівки трохи коротші, 
+        ніж задні. Лапи маленькі, овальні. Хвіст середньої довжини, товстий біля основи, з округлим кінчиком. Коти міцніші, ніж кішки. Голова серцеподібна, широка 
+        біля основи. Лоб широкий, майже плаский. Щоки й підборіддя добре розвинені. Перехід від чола до носа плавний. Ніс короткий, на ньому є ледь помітний перелом 
+        (стоп). Верхня половина ніздрів заокруглена. Очі великі, круглі, опуклі, широко розставлені, дуже блискучі, яскраво-зелені. Зелений колір очей набуває повної 
+        яскравості після досягнення кішкою віку 3-4 років. Погляд прямий і уважний. Вуха — великі, широкі біля основи, трохи заокруглені, високо сидять на голові, 
+        вкриті зовні короткою густою шерстю. Внутрішній бік вуха трохи шерстистий. Шия довга. Шерсть коротка, густа, шовковиста, як атлас, без підшерстя, тонка 
+        й гладка, прилягає до тіла. Дуже коротка й тонка на носі, задньому боці вух і лапах. Корат повинен мати рівне сріблясто-блакитне забарвлення 
+        (мальтійське забарвлення), зі сріблястим крапом (надає блиску), без єдиної цятки або малюнка. Чим більше сріблястих відтінків, тим більше цінується кішка. 
+        Мочка носа темно-блакитна або блідо-лілова. Подушечки лап темно-блакитні або блідо-лілові з рожевим відтінком.</p>
+  </div>
+</div>
+
+<div class="container">
+  <div class="image-container">
+    <img class="image" src="../porody.pic.cat/korat3.png" alt="abisynska.cat">
+  </div>
+  <div class="text">
+    <h3>Характер</h3>
+      <p>Корат — це ідеальна кішка для утримання у квартирі або в будинку без виходу назовні. За темпераментом корати спокійні й дружелюбні. Вони грайливі, активні,
+         ласкаві. Корат досить егоїстичний, ревнивий, дуже прив'язаний до господарів і не може обходитися довго без їхнього товариства. Голос подає рідко, навіть у
+          період «тічки». Любить спокійну обстановку й спокійних людей. Під яскравими променями сонця колір кората з його переливами нагадує колір лаванди. 
+          Утримання кішок в умовах зі зниженою температурою може викликати ріст і збільшення довжини й густоти шерсті. Кішки чутливі до холоду, тому схильні 
+          до простудних захворювань.</p>
+  </div>
+</div>
+
+<script>
+  window.addEventListener('load', function() {
+    const containers = document.querySelectorAll('.container');
+
+    // Анімація для кожного контейнера
+    containers.forEach((container, index) => {
+      const image = container.querySelector('.image');
+      const text = container.querySelector('.text');
+
+      setTimeout(() => {
+        image.style.opacity = '1';
+        image.style.right = '0';
+        text.style.transform = 'translateX(20px)';
+      }, (index + 1) * 300); // Кожне наступне зображення починається через 300 мс після попереднього
+    });
+  });
+</script>
+
+
+</body>
+</html>
