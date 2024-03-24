@@ -5,22 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
-        /* Стилі для мобільних пристроїв */
-@media (max-width: 768px) {
-  /* Ваші стилі для маленьких екранів */
-}
-
-/* Стилі для планшетів */
-@media (min-width: 769px) and (max-width: 1024px) {
-  /* Ваші стилі для середніх екранів */
-}
-
-/* Стилі для настільних комп'ютерів */
-@media (min-width: 1025px) {
-  /* Ваші стилі для великих екранів */
-}
-
-    /* Стилі для верхньої частини сторінки */
+        .logo {
+      font-weight: 700;
+      font-size: 18px;
+      }
+      
+      .logo-span {
+        font-style: italic;
+      }
 .header {
     background-color: #333;
     color: #fff;
@@ -214,7 +206,10 @@ body {
     
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <div class="header">
-        <a href="siteV1.html">Головна</a>
+        <a class="logo" href="index.html"><span class="logo-span">Pet</span>Life 
+            <img src="logo.png" alt="logo" width="25">
+          </a>
+            <a href="siteV1.html">Улюбленці</a>
         <a href="porody.html">Породи тварин</a>
         <div id="searchContainer">
             <input type="text" id="search" placeholder="Пошук...">
@@ -415,7 +410,7 @@ body {
             </div>
         </div>
 
-    <button onclick="topFunction()" class="top" title="Go to top">&#8593;</button>
+    <button onclick="topFunction()" class="top" title="Вгору">&#8593;</button>
 
     <script>
       window.onscroll = function() {

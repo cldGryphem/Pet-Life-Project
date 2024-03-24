@@ -5,21 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Абісинська кішка</title>
     <style>
-        /* Стилі для мобільних пристроїв */
-  @media (max-width: 768px) {
-  /* Ваші стилі для маленьких екранів */
-  }
-
-  /* Стилі для планшетів */
-  @media (min-width: 769px) and (max-width: 1024px) {
-  /* Ваші стилі для середніх екранів */
-  }
-
-  /* Стилі для настільних комп'ютерів */
-  @media (min-width: 1025px) {
-  /* Ваші стилі для великих екранів */
-  }
+     .logo {
+      font-weight: 700;
+      font-size: 18px;
+      }
       
+      .logo-span {
+        font-style: italic;
+      }
+
   .start-text {
     text-align: center; /* Вирівнювання тексту по центру */
     font-size: 24px; /* Розмір тексту */
@@ -157,11 +151,12 @@
     </style>
 </head>
 <body>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <div class="header">
-      <a href="../siteV1.html">Головна</a>
+    <a class="logo" href="/PetLife/index.html"><span class="logo-span">Pet</span>Life 
+      <img src="/PetLife/logo.png" alt="logo" width="25">
+    </a>
+      <a href="siteV1.html">Улюбленці</a>
       <a href="../porody.html">Породи тварин</a>
-      <a href="#">Взяти з притулку</a>
       <div id="searchContainer">
           <input type="text" id="search" placeholder="Пошук...">
           <!-- Список результатів пошуку -->

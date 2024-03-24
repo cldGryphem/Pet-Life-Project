@@ -5,25 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Інформація про тварин</title>
     <style>
-      /* Стилі для мобільних пристроїв */
-@media (max-width: 768px) {
-/* Ваші стилі для маленьких екранів */
+  .logo {
+font-weight: 700;
+font-size: 18px;
 }
 
-/* Стилі для планшетів */
-@media (min-width: 769px) and (max-width: 1024px) {
-/* Ваші стилі для середніх екранів */
+.logo-span {
+  font-style: italic;
 }
 
-/* Стилі для настільних комп'ютерів */
-@media (min-width: 1025px) {
-/* Ваші стилі для великих екранів */
-}
-
-  /* Стилі для верхньої частини сторінки */
 .header {
   background-color: #333;
-  color: #fff;
   padding: 15px;
   text-align: left;
   }
@@ -33,6 +25,10 @@
   text-decoration: none;
   margin: 0 10px;
   transition: opacity 0.3s ease; /* Плавний перехід затемнення */
+  }
+
+  .logo img {
+  vertical-align: middle;
   }
       
 .header a:hover {
@@ -185,12 +181,15 @@ body {
         
       
       
+
   </style>
 </head>
 <body>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <div class="header">
-      <a href="siteV1.html">Головна</a>
+    <a class="logo" href="index.html"><span class="logo-span">Pet</span>Life 
+      <img src="logo.png" alt="logo" width="25">
+    </a>
+      <a href="siteV1.html">Улюбленці</a>
       <a href="porody.html">Породи тварин</a>
       <div id="searchContainer">
           <input type="text" id="search" placeholder="Пошук...">
