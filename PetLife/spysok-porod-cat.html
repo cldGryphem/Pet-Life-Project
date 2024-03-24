@@ -5,45 +5,52 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
-        .logo {
-      font-weight: 700;
-      font-size: 18px;
-      }
-      
-      .logo-span {
-        font-style: italic;
-      }
+.logo {
+    font-weight: 700;
+    font-size: 18px;
+    }
+
+.logo-span {
+    font-style: italic;
+    }
+
+.logo img {
+    vertical-align: middle;
+    }
+
 .header {
     background-color: #333;
     color: #fff;
     padding: 15px;
     text-align: left;
     }
-        
+
 .header a {
     color: #fff;
     text-decoration: none;
     margin: 0 10px;
     transition: opacity 0.3s ease; /* Плавний перехід затемнення */
     }
-        
+
 .header a:hover {
     opacity: 0.3; /* Затемнюємо текст при наведенні */
     color: #ff5e00;
     }
 
     /* Reset стилі */
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     }
-        
+
 body {
     font-family: 'Arial', sans-serif;
     }
-    
+
     /* Стилі для заголовка "Список порід котів" */
+
 .breed-list-heading {
     text-align: center; /* Вирівнювання тексту по центру */
     font-size: 24px; /* Розмір тексту */
@@ -55,15 +62,17 @@ body {
     text-transform: uppercase; /* Текст у верхньому регістрі */
 }
 
-        
+
     /* Контейнер блоків */
+
 .block-container {
     display: flex;
     flex-wrap: wrap;
     justify-content: flex-start;
     }
-        
+
     /* Стилі для кожного блоку */
+
 .block {
     display: flex;
     flex-direction: column;
@@ -75,8 +84,9 @@ body {
     margin-bottom: 20px;
     margin-right: 20px;
     }
-        
+
     /* Стилі для зображення */
+
 .block-img {
     max-width: 100%;
     height: auto;
@@ -84,27 +94,31 @@ body {
     }
         
     /* Стилі для тексту */
+
 .block-content {
     font-size: 16px;
     color: #343a40;
     margin-bottom: 10px;
     }
+
     /* Стилі для тексту */
+
 .block-text {
     font-size: 16px;
     color: #343a40;
     margin-bottom: 10px;
     }
-        
+
 .block-title {
     font-size: 20px; /* Розмір шрифту */
     font-weight: bold; /* Товщина шрифту */
     color: #000; /* Колір тексту */
     margin-bottom: 5px; /* Відступ знизу заголовка */
     }
-        
-        
+
+
     /* Стилі для кнопки */
+
 .block-link {
     padding: 10px 20px;
     margin-top: 15px;
@@ -120,7 +134,7 @@ body {
     transition: background-color 0.3s ease;
     text-decoration: none;
     }
-        
+
 .block-link:hover {
     background-color: #0056b3;
     border-color: #0056b3;
@@ -141,63 +155,63 @@ body {
     }
 
 .top {
-      display: none;
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      font-size: 24px;
-      border: none;
-      outline: none;
-      background-color: #6a755f;
-      color: rgb(121, 195, 180);
-      cursor: pointer;
-      padding: 15px;
-      border-radius: 50%;
+    display: none;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    font-size: 24px;
+    border: none;
+    outline: none;
+    background-color: #6a755f;
+    color: rgb(121, 195, 180);
+    cursor: pointer;
+    padding: 15px;
+    border-radius: 50%;
     }
 
 #searchContainer {
-      position: absolute;
-      top: 10px;
-      right: 10px;
-      display: flex;
-      flex-direction: column;
-      align-items: flex-end;
-      margin-bottom: 40px;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    margin-bottom: 40px;
     }
 
     /* Стилі для пошукового поля */
 #search {
-      padding: 8px;
-      width: 200px;
-      font-size: 14px;
-      border: none;
-      border-radius: 4px;
-      margin-bottom: 10px;
+    padding: 8px;
+    width: 200px;
+    font-size: 14px;
+    border: none;
+    border-radius: 4px;
+    margin-bottom: 10px;
     }
 
     /* Стилі для списку результатів */
 #searchResults {
-      display: none;
-      position: absolute;
-      background-color: #e1e1e1;
-      border: none;
-      max-height: 200px;
-      overflow-y: auto;
-      list-style-type: none;
-      padding: 0;
-      margin: 0;
-      width: 200px;
-      top: calc(100% + 5px); /* Відступ від нижнього краю поля */
-  right: 0;
+    display: none;
+    position: absolute;
+    background-color: #e1e1e1;
+    border: none;
+    max-height: 200px;
+    overflow-y: auto;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    width: 200px;
+    top: calc(100% + 5px); /* Відступ від нижнього краю поля */
+    right: 0;
     }
 
 #searchResults li {
-      padding: 10px;
-      cursor: pointer;
+    padding: 10px;
+    cursor: pointer;
     }
 
 #searchResults li:hover {
-      background-color: #8d8d8d;
+    background-color: #8d8d8d;
     }
         
     </style>
@@ -208,16 +222,16 @@ body {
     <div class="header">
         <a class="logo" href="index.html"><span class="logo-span">Pet</span>Life 
             <img src="logo.png" alt="logo" width="25">
-          </a>
+        </a>
             <a href="siteV1.html">Улюбленці</a>
         <a href="porody.html">Породи тварин</a>
         <div id="searchContainer">
             <input type="text" id="search" placeholder="Пошук...">
             <!-- Список результатів пошуку -->
             <ul id="searchResults"></ul>
-          </div>
+        </div>
 
-          <script>
+        <script>
             const data = [
             { name: "Абісинська кішка",               link: "file:///C:/site/cat.porody/abbisanska-cat.html" },
             { name: "Австралійська кішка",            link: "file:///C:/site/cat.porody/avstraliyska-cat.html" },              
@@ -235,45 +249,45 @@ body {
             { name: "Мейн-кун",                       link: "file:///C:/site/cat.porody/main-coon-cat.html" },
             { name: "Сноу-шу (білоніжка)",            link: "file:///C:/site/cat.porody/snow-shoo-cat.html" },
             ];
-          
+        
             const searchInput = document.getElementById('search');
             const searchResults = document.getElementById('searchResults');
-          
+        
             // Функція для відображення результатів пошуку
             function displayResults(results) {
-              searchResults.innerHTML = '';
-              results.forEach(result => {
+                searchResults.innerHTML = '';
+                results.forEach(result => {
                 const li = document.createElement('li');
                 li.textContent = result.name;
                 li.addEventListener('click', () => {
-                  window.location.href = result.link;
+                    window.location.href = result.link;
                 });
                 searchResults.appendChild(li);
-              });
-              searchResults.style.display = 'block';
+                });
+                searchResults.style.display = 'block';
             }
-          
+        
             // Обробник події для введення тексту у поле пошуку
             searchInput.addEventListener('input', () => {
-              const searchText = searchInput.value.toLowerCase();
-              const filteredData = data.filter(item =>
+                const searchText = searchInput.value.toLowerCase();
+                const filteredData = data.filter(item =>
                 item.name.toLowerCase().includes(searchText)
-              );
-          
-              if (searchText === '') {
+                );
+        
+                if (searchText === '') {
                 searchResults.style.display = 'none';
-              } else {
+                } else {
                 displayResults(filteredData);
-              }
+                }
             });
-          
+        
             // Сховати результати при кліку поза полем пошуку
             document.addEventListener('click', (e) => {
-              if (e.target !== searchInput) {
+                if (e.target !== searchInput) {
                 searchResults.style.display = 'none';
-              }
+                }
             });
-          </script>
+        </script>
     </div>
 
     <button class="back-button" onclick="goBack()">&#8592;</button>
