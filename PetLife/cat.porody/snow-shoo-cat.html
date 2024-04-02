@@ -5,6 +5,54 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Сноу-шу (білоніжка)</title>
     <link rel="stylesheet" href="../styls.css">
+    <style>
+      
+  #searchContainer {
+  position: absolute;
+  top: 6px;
+  right: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  margin-bottom: 40px;
+}
+
+/* Стилі для пошукового поля */
+#search {
+  padding: 8px;
+  width: 200px;
+  font-size: 14px;
+  border: none;
+  border-radius: 4px;
+  margin-bottom: 10px;
+}
+
+/* Стилі для списку результатів */
+#searchResults {
+  display: none;
+  position: absolute;
+  background-color: #e1e1e1;
+  border: none;
+  max-height: 200px;
+  overflow-y: auto;
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  width: 200px;
+  top: calc(100% + 5px); /* Відступ від нижнього краю поля */
+right: 0;
+}
+
+#searchResults li {
+  padding: 10px;
+  cursor: pointer;
+}
+
+#searchResults li:hover {
+  background-color: #8d8d8d;
+}
+ 
+    </style>
  </head>
  <body>
    <div class="header">
@@ -21,21 +69,21 @@
 
         <script>
           const data = [
-          { name: "Абісинська кішка",               link: "file:///C:/site/cat.porody/abbisanska-cat.html" },
-            { name: "Австралійська кішка",            link: "file:///C:/site/cat.porody/avstraliyska-cat.html" },              
-            { name: "Азійська кішка",                 link: "file:///C:/site/cat.porody/asiat-cat.html" },
-            { name: "Балінез",                        link: "file:///C:/site/cat.porody/baliiska-cat.html" },
-            { name: "Бенгальська кішка",              link: "file:///C:/site/cat.porody/bengalska-cat.html" },
-            { name: "Бірманська кішка",               link: "file:///C:/site/cat.porody/birmanska-cat.html" },
-            { name: "Бомбейська кішка",               link: "file:///C:/site/cat.porody/bombeiska-cat.html" },
-            { name: "Британська короткошерста кішка", link: "file:///C:/site/cat.porody/brytan-cat.html" },
-            { name: "Девон-рекс",                     link: "file:///C:/site/cat.porody/devon-rex-cat.html" },
-            { name: "Екзотична короткошерста кішка",  link: "file:///C:/site/cat.porody/exotyc-cat.html" },
-            { name: "Манчкін",                        link: "file:///C:/site/cat.porody/manchkin-cat.html" },
-            { name: "Корат",                          link: "file:///C:/site/cat.porody/korat-cat.html" },
-            { name: "Лаперм",                         link: "file:///C:/site/cat.porody/laperm-cat.html" },
-            { name: "Мейн-кун",                       link: "file:///C:/site/cat.porody/main-coon-cat.html" },
-            { name: "Сноу-шу (білоніжка)",            link: "file:///C:/site/cat.porody/snow-shoo-cat.html" },
+          { name: "Абісинська кішка",               link: "https://cldgryphem.github.io/Pet-Life-Project/PetLife/cat.porody/abbisanska-cat.html" },
+            { name: "Австралійська кішка",            link: "https://cldgryphem.github.io/Pet-Life-Project/PetLife/cat.porody/avstraliyska-cat.html" },              
+            { name: "Азійська кішка",                 link: "https://cldgryphem.github.io/Pet-Life-Project/PetLife/cat.porody/asiat-cat.html" },
+            { name: "Балінез",                        link: "https://cldgryphem.github.io/Pet-Life-Project/PetLife/cat.porody/baliiska-cat.html" },
+            { name: "Бенгальська кішка",              link: "https://cldgryphem.github.io/Pet-Life-Project/PetLife/cat.porody/bengalska-cat.html" },
+            { name: "Бірманська кішка",               link: "https://cldgryphem.github.io/Pet-Life-Project/PetLife/cat.porody/birmanska-cat.html" },
+            { name: "Бомбейська кішка",               link: "https://cldgryphem.github.io/Pet-Life-Project/PetLife/cat.porody/bombeiska-cat.html" },
+            { name: "Британська короткошерста кішка", link: "https://cldgryphem.github.io/Pet-Life-Project/PetLife/cat.porody/brytan-cat.html" },
+            { name: "Девон-рекс",                     link: "https://cldgryphem.github.io/Pet-Life-Project/PetLife/cat.porody/devon-rex-cat.html" },
+            { name: "Екзотична короткошерста кішка",  link: "https://cldgryphem.github.io/Pet-Life-Project/PetLife/cat.porody/exotyc-cat.html" },
+            { name: "Манчкін",                        link: "https://cldgryphem.github.io/Pet-Life-Project/PetLife/cat.porody/manchkin-cat.html" },
+            { name: "Корат",                          link: "https://cldgryphem.github.io/Pet-Life-Project/PetLife/cat.porody/korat-cat.html" },
+            { name: "Лаперм",                         link: "https://cldgryphem.github.io/Pet-Life-Project/PetLife/cat.porody/laperm-cat.html" },
+            { name: "Мейн-кун",                       link: "https://cldgryphem.github.io/Pet-Life-Project/PetLife/cat.porody/main-coon-cat.html" },
+            { name: "Сноу-шу (білоніжка)",            link: "https://cldgryphem.github.io/Pet-Life-Project/PetLife/cat.porody/snow-shoo-cat.html" },
           ];
         
           const searchInput = document.getElementById('search');

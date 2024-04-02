@@ -5,184 +5,277 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
-        .logo {
-      font-weight: 700;
-      font-size: 18px;
+      .logo {
+    font-weight: 700;
+    font-size: 18px;
+    }
+    
+    .logo-span {
+      font-style: italic;
+    }
+    
+    .header {
+      background-color: #333;
+      padding: 5px;
+      text-align: left;
+      }
+          
+    .header a {
+      color: #fff;
+      text-decoration: none;
+      margin: 0 10px;
+      transition: opacity 0.3s ease; /* Плавний перехід затемнення */
+      }
+    
+      .logo img {
+      vertical-align: middle;
+      }
+          
+    .header a:hover {
+      opacity: 0.3; /* Затемнюємо текст при наведенні */
+      color: #ff5e00;
+      }
+    
+      /* Reset стилі */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      }
+          
+    body {
+      font-family: 'Arial', sans-serif;
       }
       
-      .logo-span {
-        font-style: italic;
+      /* Стилі для заголовка "Список порід котів" */
+    .breed-list-heading {
+      text-align: center; /* Вирівнювання тексту по центру */
+      font-size: 24px; /* Розмір тексту */
+      color: #333; /* Колір тексту */
+      margin-top: 15px; /* Відступ зверху */
+      margin-bottom: 10px;
+    /* Додаткові стилізації (необов'язково) */
+      font-weight: bold; /* Жирний шрифт */
+      text-transform: uppercase; /* Текст у верхньому регістрі */
+    }
+    
+          
+      /* Контейнер блоків */
+    .block-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-start;
       }
-      
-      .header {
-        background-color: #333;
-        padding: 5px;
-        text-align: left;
-        }
-            
-      .header a {
-        color: #fff;
-        text-decoration: none;
-        margin: 0 10px;
-        transition: opacity 0.3s ease; /* Плавний перехід затемнення */
-        }
-      
-        .logo img {
-        vertical-align: middle;
-        }
-            
-      .header a:hover {
-        opacity: 0.3; /* Затемнюємо текст при наведенні */
-        color: #ff5e00;
-        }
-      
-        /* Reset стилі */
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-        }
-            
-      body {
-        font-family: 'Arial', sans-serif;
-        }
+          
+      /* Стилі для кожного блоку */
+    .block {
+      display: flex;
+      flex-direction: column;
+      width: calc(33.333% - 20px);
+      background-color: #f8f9fa;
+      border: 1px solid rgba(0, 0, 0, 0.125);
+      border-radius: 0.25rem;
+      padding: 15px;
+      margin-bottom: 20px;
+      margin-right: 20px;
+      }
+          
+      /* Стилі для зображення */
+    .block-img {
+      max-width: 100%;
+      height: auto;
+      margin-bottom: 10px;
+      }
+          
+      /* Стилі для тексту */
+    .block-content {
+      font-size: 16px;
+      color: #343a40;
+      margin-bottom: 10px;
+      }
+      /* Стилі для тексту */
+    .block-text {
+      font-size: 16px;
+      color: #343a40;
+      margin-bottom: 10px;
+      }
+          
+    .block-title {
+      font-size: 20px; /* Розмір шрифту */
+      font-weight: bold; /* Товщина шрифту */
+      color: #000; /* Колір тексту */
+      margin-bottom: 5px; /* Відступ знизу заголовка */
+      }
+          
+          
+      /* Стилі для кнопки */
+    .block-link {
+      max-width: 100%; /* Максимальна ширина тексту в межах блоку */
+      white-space: nowrap; /* Заборона перенесення тексту на новий рядок */
+      overflow: hidden; /* Приховання тексту, який виходить за межі */
+      text-overflow: ellipsis; /* Додавання маркера місця зрізання тексту (...) */
+      padding: 10px 20px;
+      margin-top: 15px;
+      font-size: 14px;
+      font-weight: 400;
+      line-height: 1.5;
+      border-radius: 0.25rem;
+      cursor: pointer;
+      background-color: #007bff;
+      color: #fff;
+      border: 1px solid #007bff;
+      text-align: center;
+      transition: background-color 0.3s ease;
+      text-decoration: none;
+      }
+          
+    .block-link:hover {
+      background-color: #0056b3;
+      border-color: #0056b3;
+      }
+    
+    
+      #searchContainer {
+      position: absolute;
+      top: 6px;
+      right: 10px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      margin-bottom: 40px;
+    }
+    
+    /* Стилі для пошукового поля */
+    #search {
+      padding: 8px;
+      width: 200px;
+      font-size: 14px;
+      border: none;
+      border-radius: 4px;
+      margin-bottom: 10px;
+    }
+    
+    /* Стилі для списку результатів */
+    #searchResults {
+      display: none;
+      position: absolute;
+      background-color: #e1e1e1;
+      border: none;
+      max-height: 200px;
+      overflow-y: auto;
+      list-style-type: none;
+      padding: 0;
+      margin: 0;
+      width: 200px;
+      top: calc(100% + 5px); /* Відступ від нижнього краю поля */
+    right: 0;
+    }
+    
+    #searchResults li {
+      padding: 10px;
+      cursor: pointer;
+    }
+    
+    #searchResults li:hover {
+      background-color: #8d8d8d;
+    }
         
-        /* Стилі для заголовка "Список порід котів" */
-      .breed-list-heading {
-        text-align: center; /* Вирівнювання тексту по центру */
-        font-size: 24px; /* Розмір тексту */
-        color: #333; /* Колір тексту */
-        margin-top: 15px; /* Відступ зверху */
-        margin-bottom: 10px;
-      /* Додаткові стилізації (необов'язково) */
-        font-weight: bold; /* Жирний шрифт */
-        text-transform: uppercase; /* Текст у верхньому регістрі */
-      }
-      
-            
-        /* Контейнер блоків */
-      .block-container {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: flex-start;
-        }
-            
-        /* Стилі для кожного блоку */
-      .block {
+    
+    
+      #searchContainer {
+        position: absolute;
+        top: 6px;
+        right: 10px;
         display: flex;
         flex-direction: column;
-        width: calc(33.333% - 20px);
-        background-color: #f8f9fa;
-        border: 1px solid rgba(0, 0, 0, 0.125);
-        border-radius: 0.25rem;
-        padding: 15px;
-        margin-bottom: 20px;
-        margin-right: 20px;
+        align-items: flex-end;
+        margin-bottom: 40px;
+        }
+    
+        /* Стилі для пошукового поля */
+    #search {
+          padding: 8px;
+          width: 200px;
+          font-size: 14px;
+          border: none;
+          border-radius: 4px;
+          margin-bottom: 10px;
+        }
+    
+        /* Стилі для списку результатів */
+    #searchResults {
+          display: none;
+          position: absolute;
+          background-color: #e1e1e1;
+          border: none;
+          max-height: 200px;
+          overflow-y: auto;
+          list-style-type: none;
+          padding: 0;
+          margin: 0;
+          width: 200px;
+          top: calc(100% + 5px); /* Відступ від нижнього краю поля */
+      right: 0;
+        }
+    
+    #searchResults li {
+          padding: 10px;
+          cursor: pointer;
+        }
+    
+    #searchResults li:hover {
+          background-color: #8d8d8d;
         }
             
-        /* Стилі для зображення */
-      .block-img {
-        max-width: 100%;
-        height: auto;
-        margin-bottom: 10px;
-        }
-            
-        /* Стилі для тексту */
-      .block-content {
-        font-size: 16px;
-        color: #343a40;
-        margin-bottom: 10px;
-        }
-        /* Стилі для тексту */
-      .block-text {
-        font-size: 16px;
-        color: #343a40;
-        margin-bottom: 10px;
-        }
-            
-      .block-title {
-        font-size: 20px; /* Розмір шрифту */
-        font-weight: bold; /* Товщина шрифту */
-        color: #000; /* Колір тексту */
-        margin-bottom: 5px; /* Відступ знизу заголовка */
-        }
-            
-            
-        /* Стилі для кнопки */
-      .block-link {
-        max-width: 100%; /* Максимальна ширина тексту в межах блоку */
-        white-space: nowrap; /* Заборона перенесення тексту на новий рядок */
-        overflow: hidden; /* Приховання тексту, який виходить за межі */
-        text-overflow: ellipsis; /* Додавання маркера місця зрізання тексту (...) */
-        padding: 10px 20px;
-        margin-top: 15px;
-        font-size: 14px;
-        font-weight: 400;
-        line-height: 1.5;
-        border-radius: 0.25rem;
-        cursor: pointer;
-        background-color: #007bff;
-        color: #fff;
-        border: 1px solid #007bff;
-        text-align: center;
-        transition: background-color 0.3s ease;
-        text-decoration: none;
-        }
-            
-      .block-link:hover {
-        background-color: #0056b3;
-        border-color: #0056b3;
-        }
-      
-        #searchContainer {
-            position: absolute;
-            top: 6px;
-            right: 10px;
-            display: flex;
-            flex-direction: column;
-            align-items: flex-end;
-            margin-bottom: 40px;
-          }
-      
-          /* Стилі для пошукового поля */
-      #search {
-            padding: 8px;
-            width: 200px;
-            font-size: 14px;
-            border: none;
-            border-radius: 4px;
-            margin-bottom: 10px;
-          }
-      
-          /* Стилі для списку результатів */
-      #searchResults {
-            display: none;
-            position: absolute;
-            background-color: #e1e1e1;
-            border: none;
-            max-height: 200px;
-            overflow-y: auto;
-            list-style-type: none;
-            padding: 0;
-            margin: 0;
-            width: 200px;
-            top: calc(100% + 5px); /* Відступ від нижнього краю поля */
-        right: 0;
-          }
-      
-      #searchResults li {
-            padding: 10px;
-            cursor: pointer;
-          }
-      
-      #searchResults li:hover {
-            background-color: #8d8d8d;
-          }
-              
-            
-            
-      
-        </style>
+          
+          
+  #searchContainer {
+  position: absolute;
+  top: 6px;
+  right: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  margin-bottom: 40px;
+}
+
+/* Стилі для пошукового поля */
+#search {
+  padding: 8px;
+  width: 200px;
+  font-size: 14px;
+  border: none;
+  border-radius: 4px;
+  margin-bottom: 10px;
+}
+
+/* Стилі для списку результатів */
+#searchResults {
+  display: none;
+  position: absolute;
+  background-color: #e1e1e1;
+  border: none;
+  max-height: 200px;
+  overflow-y: auto;
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  width: 200px;
+  top: calc(100% + 5px); /* Відступ від нижнього краю поля */
+right: 0;
+}
+
+#searchResults li {
+  padding: 10px;
+  cursor: pointer;
+}
+
+#searchResults li:hover {
+  background-color: #8d8d8d;
+}
+ 
+    
+      </style>
       </head>
       <body>
         <div class="header">
@@ -198,22 +291,22 @@
               </div>
               <script>
                 const data = [
-                { name: "Абісинська кішка",               link: "file:///C:/site/cat.porody/abbisanska-cat.html" },
-                { name: "Австралійська кішка",            link: "file:///C:/site/cat.porody/avstraliyska-cat.html" },              
-                { name: "Азійська кішка",                 link: "file:///C:/site/cat.porody/asiat-cat.html" },
-                { name: "Балінез",                        link: "file:///C:/site/cat.porody/baliiska-cat.html" },
-                { name: "Бенгальська кішка",              link: "file:///C:/site/cat.porody/bengalska-cat.html" },
-                { name: "Бірманська кішка",               link: "file:///C:/site/cat.porody/birmanska-cat.html" },
-                { name: "Бомбейська кішка",               link: "file:///C:/site/cat.porody/bombeiska-cat.html" },
-                { name: "Британська короткошерста кішка", link: "file:///C:/site/cat.porody/brytan-cat.html" },
-                { name: "Девон-рекс",                     link: "file:///C:/site/cat.porody/devon-rex-cat.html" },
-                { name: "Екзотична короткошерста кішка",  link: "file:///C:/site/cat.porody/exotyc-cat.html" },
-                { name: "Манчкін",                        link: "file:///C:/site/cat.porody/manchkin-cat.html" },
-                { name: "Корат",                          link: "file:///C:/site/cat.porody/korat-cat.html" },
-                { name: "Лаперм",                         link: "file:///C:/site/cat.porody/laperm-cat.html" },
-                { name: "Мейн-кун",                       link: "file:///C:/site/cat.porody/main-coon-cat.html" },
-                { name: "Сноу-шу (білоніжка)",            link: "file:///C:/site/cat.porody/snow-shoo-cat.html" },
-                ];
+                { name: "Абісинська кішка",               link: "https://cldgryphem.github.io/Pet-Life-Project/PetLife/cat.porody/abbisanska-cat.html" },
+            { name: "Австралійська кішка",            link: "https://cldgryphem.github.io/Pet-Life-Project/PetLife/cat.porody/avstraliyska-cat.html" },              
+            { name: "Азійська кішка",                 link: "https://cldgryphem.github.io/Pet-Life-Project/PetLife/cat.porody/asiat-cat.html" },
+            { name: "Балінез",                        link: "https://cldgryphem.github.io/Pet-Life-Project/PetLife/cat.porody/baliiska-cat.html" },
+            { name: "Бенгальська кішка",              link: "https://cldgryphem.github.io/Pet-Life-Project/PetLife/cat.porody/bengalska-cat.html" },
+            { name: "Бірманська кішка",               link: "https://cldgryphem.github.io/Pet-Life-Project/PetLife/cat.porody/birmanska-cat.html" },
+            { name: "Бомбейська кішка",               link: "https://cldgryphem.github.io/Pet-Life-Project/PetLife/cat.porody/bombeiska-cat.html" },
+            { name: "Британська короткошерста кішка", link: "https://cldgryphem.github.io/Pet-Life-Project/PetLife/cat.porody/brytan-cat.html" },
+            { name: "Девон-рекс",                     link: "https://cldgryphem.github.io/Pet-Life-Project/PetLife/cat.porody/devon-rex-cat.html" },
+            { name: "Екзотична короткошерста кішка",  link: "https://cldgryphem.github.io/Pet-Life-Project/PetLife/cat.porody/exotyc-cat.html" },
+            { name: "Манчкін",                        link: "https://cldgryphem.github.io/Pet-Life-Project/PetLife/cat.porody/manchkin-cat.html" },
+            { name: "Корат",                          link: "https://cldgryphem.github.io/Pet-Life-Project/PetLife/cat.porody/korat-cat.html" },
+            { name: "Лаперм",                         link: "https://cldgryphem.github.io/Pet-Life-Project/PetLife/cat.porody/laperm-cat.html" },
+            { name: "Мейн-кун",                       link: "https://cldgryphem.github.io/Pet-Life-Project/PetLife/cat.porody/main-coon-cat.html" },
+            { name: "Сноу-шу (білоніжка)",            link: "https://cldgryphem.github.io/Pet-Life-Project/PetLife/cat.porody/snow-shoo-cat.html" },
+          ];
               
                 const searchInput = document.getElementById('search');
                 const searchResults = document.getElementById('searchResults');
