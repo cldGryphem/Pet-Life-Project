@@ -18,13 +18,24 @@ font-size: 18px;
     background-color: #333;
     padding: 5px;
     text-align: left;
+    transition: top 0.3s;
+    position: sticky;
+    width: 100%;
+}
+
+.hidden {
+    top: -100px;
+    }
+
+.content {
+    margin-top: 50px;
     }
 
 .header a {
     color: #fff;
     text-decoration: none;
     margin: 0 10px;
-    transition: opacity 0.3s ease; /* Плавний перехід затемнення */
+    transition: opacity 0.3s ease;
     }
 
 .logo img {
@@ -32,7 +43,7 @@ font-size: 18px;
     }
 
 .header a:hover {
-  opacity: 0.3; /* Затемнюємо текст при наведенні */
+  opacity: 0.3;
     color: #ff5e00;
     }
 
@@ -51,13 +62,12 @@ body {
     /* Стилі для заголовка "Список порід котів" */
 
 .breed-list-heading {
-    text-align: center; /* Вирівнювання тексту по центру */
-    font-size: 24px; /* Розмір тексту */
-    color: #333; /* Колір тексту */
-    margin-top: 5px; /* Відступ зверху */
+    text-align: center;
+    font-size: 24px;
+    color: #333;
+    margin-top: 5px;
     margin-bottom: 10px;
-  /* Додаткові стилізації */
-    font-weight: bold; /* Жирний шрифт */
+    font-weight: bold;
     text-transform: uppercase; /* Текст у верхньому регістрі */
 }
 
@@ -109,10 +119,10 @@ body {
     }
 
 .block-title {
-    font-size: 20px; /* Розмір шрифту */
-    font-weight: bold; /* Товщина шрифту */
-    color: #000; /* Колір тексту */
-    margin-bottom: 5px; /* Відступ знизу заголовка */
+    font-size: 20px;
+    font-weight: bold;
+    color: #000;
+    margin-bottom: 5px;
     }
 
 
@@ -263,7 +273,8 @@ right: 0;
     </style>
 </head>
 <body>
-    <div class="header">
+    <header>
+    <div class="header" id="header">
         <a class="logo" href="index.html"><span class="logo-span">Pet</span>Life 
             <img src="logo.png" alt="logo" width="35">
         </a>
@@ -292,7 +303,7 @@ right: 0;
             { name: "Лаперм",                         link: "https://cldgryphem.github.io/Pet-Life-Project/PetLife/cat.porody/laperm-cat.html" },
             { name: "Мейн-кун",                       link: "https://cldgryphem.github.io/Pet-Life-Project/PetLife/cat.porody/main-coon-cat.html" },
             { name: "Сноу-шу (білоніжка)",            link: "https://cldgryphem.github.io/Pet-Life-Project/PetLife/cat.porody/snow-shoo-cat.html" },
-          ];
+            ];
         
             const searchInput = document.getElementById('search');
             const searchResults = document.getElementById('searchResults');
@@ -333,6 +344,7 @@ right: 0;
             });
         </script>
     </div>
+    </header>
 
     <button class="back-button" onclick="goBack()">&#8592;</button>
 
@@ -341,6 +353,7 @@ right: 0;
         window.history.back();
     }
 </script>
+
 
     <div class="container">
         <h1 class="breed-list-heading">Список порід котів</h1>
